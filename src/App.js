@@ -27,14 +27,14 @@ const App = () => {
         setLoading(true);
         try {
             const req = await fetch(
-                `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=nT9pbYyOigoQ4vn0WGTemgbQEvGENQ9Y&q=${text}`
+                `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=nT9pbYyOigoQ4vn0WGTemgbQEvGENQ9Y&q=${text}`
             );
             const data = await req.json();
             setLocation(data);
 
             const fetchWeather = async () => {
                 const req2 = await fetch(
-                    `http://dataservice.accuweather.com/currentconditions/v1/${data[0].Key}?apikey=nT9pbYyOigoQ4vn0WGTemgbQEvGENQ9Y&details=true`
+                    `https://dataservice.accuweather.com/currentconditions/v1/${data[0].Key}?apikey=nT9pbYyOigoQ4vn0WGTemgbQEvGENQ9Y&details=true`
                 );
                 const data2 = await req2.json();
                 setWeatherData(data2);
@@ -42,7 +42,7 @@ const App = () => {
 
             const fetchWeekWeather = async () => {
                 const req3 = await fetch(
-                    `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${data[0].Key}?apikey=nT9pbYyOigoQ4vn0WGTemgbQEvGENQ9Y&details=true`
+                    `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${data[0].Key}?apikey=nT9pbYyOigoQ4vn0WGTemgbQEvGENQ9Y&details=true`
                 );
                 const data3 = await req3.json();
                 setWeatherWeekData(data3);
